@@ -9,6 +9,8 @@ The Friday Night Funkin' Forever Engine is an engine solely based on source code
 
 **FOREVER ENGINE IS ONLY MEANT TO BE USED ON DESKTOP! I AM NOT RESPONSIBLE FOR CRASHES/PROBLEMS WITH HTML5, NOR AM I RESPONSIBLE FOR MAINTAINING HTML5**
 
+**Please redirect all future and current enhancements to the [new repository](https://github.com/Yoshubs/FNF-Forever-Engine)**
+
 ----------------------------------------------
 Forever Engine FEATURES! - 
 Noteskins,

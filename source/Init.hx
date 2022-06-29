@@ -4,7 +4,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
 import flixel.input.keyboard.FlxKey;
 import meta.CoolUtil;
-import meta.InfoHud;
+import meta.Overlay;
 import meta.data.Highscore;
 import meta.data.dependency.Discord;
 import meta.state.*;
@@ -50,7 +50,7 @@ class Init extends FlxState
 			'Whether to have the strumline vertically flipped in gameplay.',
 			NOT_FORCED
 		],
-		'Auto Pause' => [true, Checkmark, '', NOT_FORCED],
+		'Auto Pause' => [true, Checkmark, 'Whether to pause the game automatically if the window is unfocused.', NOT_FORCED],
 		'FPS Counter' => [true, Checkmark, 'Whether to display the FPS counter.', NOT_FORCED],
 		'Memory Counter' => [
 			true,
@@ -279,6 +279,9 @@ class Init extends FlxState
 		saveSettings();
 
 		updateAll();
+
+		FlxG.sound.volume = FlxG.save.data.volume;
+		FlxG.sound.muted = FlxG.save.data.mute;
 	}
 
 	public static function loadControls():Void
@@ -306,7 +309,9 @@ class Init extends FlxState
 
 	public static function updateAll()
 	{
-		InfoHud.updateDisplayInfo(trueSettings.get('FPS Counter'), trueSettings.get('Debug Info'), trueSettings.get('Memory Counter'));
+		FlxG.autoPause = trueSettings.get('Auto Pause');
+		
+		Overlay.updateDisplayInfo(trueSettings.get('FPS Counter'), trueSettings.get('Debug Info'), trueSettings.get('Memory Counter'));
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
